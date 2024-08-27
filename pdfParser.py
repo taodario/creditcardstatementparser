@@ -27,9 +27,12 @@ def parse_transactions(text):
 
 @app.route('/parse', methods=['POST'])
 def parse():
+    # data = request.json
+    # text = data.get('text', '')
     text = request.data.decode('utf-8')
     print("Received text: ", text)
     transactions = parse_transactions(text)
+    print(transactions)
     return jsonify(transactions)
 
 
