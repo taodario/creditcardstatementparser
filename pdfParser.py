@@ -25,12 +25,18 @@ def parse_transactions(text):
     } for m in matches]
 
 
-@app.route('/parse', methods=('POST'))
+@app.route('/parse', methods=['POST'])
 def parse():
     data = request.json
     text = data.get('text', '')
+    print("Received text: ", text)
     transactions = parse_transactions(text)
     return jsonify(transactions)
+
+
+@app.route('/test', methods=['GET'])
+def test():
+    return "Flask is working!"
 
 
 if __name__ == '__main__':
